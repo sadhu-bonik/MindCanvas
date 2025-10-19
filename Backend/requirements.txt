@@ -1,0 +1,6 @@
+fastapi
+pydantic
+openai
+google-genai
+python-dotenv
+uvicorn

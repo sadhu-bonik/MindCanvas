@@ -1,0 +1,377 @@
+@import "./tailwind.css";
+
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Disable browser default behaviors for app-like experience */
+* {
+  /* Disable context menu (right-click menu) */
+  -webkit-context-menu: none;
+  -moz-context-menu: none;
+  context-menu: none;
+  
+  /* Disable text selection by default */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+  /* Disable drag and drop */
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  user-drag: none;
+  
+  /* Disable touch callout (mobile) */
+  -webkit-touch-callout: none;
+  
+  /* Disable tap highlight */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Re-enable text selection for specific elements where needed */
+input, 
+textarea, 
+[contenteditable="true"],
+.selectable-text,
+.message-content,
+.markdown-content {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Disable image dragging */
+img {
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+/* Re-enable pointer events for interactive images */
+img.interactive {
+  pointer-events: auto;
+}
+
+/* Disable text selection highlighting */
+::selection {
+  background: transparent;
+}
+
+::-moz-selection {
+  background: transparent;
+}
+
+/* Re-enable selection for text areas */
+input::selection,
+textarea::selection,
+[contenteditable="true"]::selection,
+.selectable-text::selection {
+  background: #3b82f6;
+  color: white;
+}
+
+input::-moz-selection,
+textarea::-moz-selection,
+[contenteditable="true"]::-moz-selection,
+.selectable-text::-moz-selection {
+  background: #3b82f6;
+  color: white;
+}
+
+/* Disable outline on focus for non-interactive elements */
+*:focus {
+  outline: none;
+}
+
+/* Re-enable focus outline for interactive elements */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex]:focus,
+a:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Disable browser zoom on double tap (mobile) */
+* {
+  touch-action: manipulation;
+}
+
+/* Disable pull-to-refresh */
+body {
+  overscroll-behavior: none;
+}
+
+/* Disable browser's default drag behavior */
+* {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+/* Additional app-like behaviors */
+html {
+  /* Prevent zoom on iOS Safari */
+  -webkit-text-size-adjust: 100%;
+  /* Prevent horizontal scrolling */
+  overflow-x: hidden;
+}
+
+body {
+  /* Prevent bounce scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+  /* Prevent text size adjustment */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  /* Prevent horizontal scrolling */
+  overflow-x: hidden;
+}
+
+/* Disable iOS Safari bounce effect */
+body {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Disable text selection on buttons and interactive elements */
+button,
+.button,
+[role="button"] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Disable highlighting on mobile tap */
+button,
+.button,
+[role="button"],
+a {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Prevent text cursor on non-text elements */
+div:not(.selectable-text):not(.message-content):not(.markdown-content),
+span:not(.selectable-text):not(.message-content):not(.markdown-content),
+p:not(.selectable-text):not(.message-content):not(.markdown-content) {
+  cursor: default;
+}
+
+/* Custom cursor for interactive elements */
+button,
+.button,
+[role="button"],
+a,
+.clickable {
+  cursor: pointer;
+}
+
+/* Disable browser's default focus ring and add custom one */
+*:focus {
+  outline: none;
+}
+
+/* Custom focus styles for accessibility */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible,
+a:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Disable browser autocomplete styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+/* Prevent iOS zoom on input focus */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea {
+  font-size: 16px; /* Prevents zoom on iOS */
+}
+
+/* Hide browser's default validation tooltips */
+input:invalid,
+textarea:invalid {
+  box-shadow: none;
+}
+
+/* Disable browser's default resize handle on textareas */
+textarea {
+  resize: none;
+}
+
+/* React Flow connection handle styles */
+.react-flow__handle {
+  opacity: 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.react-flow__node:hover .react-flow__handle {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.react-flow__handle-connecting {
+  opacity: 1 !important;
+  transform: scale(1.2) !important;
+}
+
+/* Show handles in connection mode */
+.react-flow.connecting .react-flow__handle {
+  opacity: 0.7 !important;
+}
+
+.react-flow.connecting .react-flow__node:hover .react-flow__handle {
+  opacity: 1 !important;
+  transform: scale(1.2);
+}
+
+/* Enhanced connection line styles */
+.react-flow__edge-path {
+  stroke-width: 2;
+  stroke-dasharray: 5,5;
+  animation: dash 1s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -10;
+  }
+}
+
+/* Node selection styles */
+.react-flow__node.selected {
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+
+/* Connection mode visual feedback */
+.react-flow.connecting .react-flow__node {
+  cursor: crosshair;
+}
+
+.react-flow.connecting .react-flow__handle {
+  opacity: 1 !important;
+  transform: scale(1.2);
+}
+
+/* Additional context menu prevention */
+* {
+  /* Disable context menu for all elements */
+  -webkit-context-menu: none;
+  -moz-context-menu: none;
+  context-menu: none;
+}
+
+/* Prevent browser selection context menu */
+*::selection {
+  /* Override default selection behavior */
+  background: transparent;
+}
+
+*::-moz-selection {
+  background: transparent;
+}
+
+/* Re-enable selection styling for allowed elements */
+.selectable-text::selection,
+.message-content::selection,
+.markdown-content::selection,
+input::selection,
+textarea::selection {
+  background: #3b82f6;
+  color: white;
+}
+
+.selectable-text::-moz-selection,
+.message-content::-moz-selection,
+.markdown-content::-moz-selection,
+input::-moz-selection,
+textarea::-moz-selection {
+  background: #3b82f6;
+  color: white;
+}
+
+/* Disable browser's default text selection menu */
+.selectable-text,
+.message-content,
+.markdown-content {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  /* Disable context menu even for selectable text */
+  -webkit-context-menu: none;
+  -moz-context-menu: none;
+  context-menu: none;
+}
+
